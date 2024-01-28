@@ -10,7 +10,7 @@ namespace TestWebApplication.Models
     public class User
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }
 
         [Required(ErrorMessage = "Имя пользователя обязательно")]
