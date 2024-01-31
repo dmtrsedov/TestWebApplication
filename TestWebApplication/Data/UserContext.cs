@@ -17,13 +17,14 @@ namespace TestWebApplication.Data
         public DbSet<Sprint> Sprints { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Models.Task> Tasks { get; set; }
-
+        public DbSet<PasswordResetCode> PasswordResetCodes { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Sprint>().ToTable("Sprint");
             modelBuilder.Entity<Project>().ToTable("Project");
             modelBuilder.Entity<Models.Task>().ToTable("Task");
+            modelBuilder.Entity<PasswordResetCode>().ToTable("PasswordResetCode");
         }
     }
 }

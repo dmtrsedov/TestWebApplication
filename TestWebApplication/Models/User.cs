@@ -17,6 +17,7 @@ namespace TestWebApplication.Models
         [Display(Name = "Введите имя")]
         public string Username { get; set; }
 
+
         [Required(ErrorMessage = "Пароль обязателен")]
         [DataType(DataType.Password)]
         [Display(Name = "Введите пароль")]
@@ -27,6 +28,9 @@ namespace TestWebApplication.Models
         [Display(Name = "Введите почту")]
         public string Email { get; set; }
 
+        [NotMapped]
+        [DataType(DataType.Password)]
+        public string? NewPassword { get; set; }
         // Role устанавливается по умолчанию в "User"
         public string Role { get; set; } = "User";
 

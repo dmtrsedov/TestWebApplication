@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TestWebApplication.Models.Task>
+
+@{
+    ViewData["Title"] = "Мои задачи";
+}
+
+<h1>Мои задачи</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sprint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignedUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Files)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sprint.SprintID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignedUser.Email)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

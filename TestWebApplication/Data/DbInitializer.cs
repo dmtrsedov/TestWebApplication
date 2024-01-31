@@ -1,4 +1,6 @@
-﻿using TestWebApplication.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using TestWebApplication.Controllers;
+using TestWebApplication.Models;
 
 namespace TestWebApplication.Data
 {
@@ -6,6 +8,8 @@ namespace TestWebApplication.Data
     {
         public static void Initialize(UserContext context)
         {
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
             if (context.Users.Any())
             {
                 return;   // DB has been seeded
@@ -16,17 +20,24 @@ namespace TestWebApplication.Data
             {
             new User
             {
-                Username = "user1",
-                Password = "password1", // Здесь лучше использовать хэшированный пароль, а не просто текст
-                Email = "user1@example.com",
+                Username = "user",
+                Password = AccountController.HashPassword("user"),
+                Email = "user@example.com",
                 Role = "User"
             },
             new User
             {
-                Username = "user2",
-                Password = "password2",
-                Email = "user2@example.com",
-                Role = "User"
+                Username = "manager",
+                Password = AccountController.HashPassword("manager"),
+                Email = "manager@example.com",
+                Role = "Manager"
+            },
+            new User
+            {
+                Username = "admin",
+                Password = AccountController.HashPassword("admin"),
+                Email = "dmtrsedov@gmail.com",
+                Role = "Admin"
             },
                 // Добавьте дополнительные пользователи, если необходимо
             };
@@ -110,6 +121,26 @@ namespace TestWebApplication.Data
 
             context.Tasks.AddRange(tasks);
             context.SaveChanges();
+//            var resetCodes = new PasswordResetCode[]
+//{
+//            new PasswordResetCode
+//            {
+//                UserId = 1, 
+//                Code = "1234", 
+//                Expiration = DateTime.UtcNow.AddHours(1)
+//            },
+//            new PasswordResetCode
+//            {
+//                UserId = 2,
+//                Code = "1234",
+//                Expiration = DateTime.UtcNow.AddHours(1)
+//    },
+//    // Добавьте дополнительные коды сброса пароля
+//};
+
+//            context.PasswordResetCodes.AddRange(resetCodes);
+//            context.SaveChanges();
+
         }
     }
 }

@@ -14,6 +14,7 @@ namespace TestWebApplication.Models
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        [Required(ErrorMessage = "Пароль обязателен")]
         [DataType(DataType.Password)]
         [Display(Name = "Подтвердите пароль")]
         public string ConfirmPassword { get; set; }
