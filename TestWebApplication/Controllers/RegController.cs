@@ -11,10 +11,6 @@ namespace TestWebApplication.Controllers
         private readonly UserContext _dbContext;
         public IActionResult Index()
         {
-            return View();
-        }
-        public RegController(UserContext dbContext)
-        {
             _dbContext = dbContext;
         }
 
