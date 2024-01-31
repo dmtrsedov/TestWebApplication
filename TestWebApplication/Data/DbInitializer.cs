@@ -8,8 +8,8 @@ namespace TestWebApplication.Data
     {
         public static void Initialize(UserContext context)
         {
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            //context.Database.EnsureDeleted();
+            //context.Database.EnsureCreated();
             if (context.Users.Any())
             {
                 return;   // DB has been seeded
